@@ -3,9 +3,12 @@ body{
   background: -webkit-linear-gradient(bottom right, #F8D353, #FF5C5A);
   background: -moz-linear-gradient(bottom right, #F8D353, #FF5C5A);
   background: linear-gradient(bottom right, #F8D353, #FF5C5A);
-	color: #fff;
+	color: #000;
 }
 .main-text{
 	padding-top: 100px;
+	text-align: center;
+}
+.text-center{
 	text-align: center;
 }
