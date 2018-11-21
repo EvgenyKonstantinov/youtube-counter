@@ -14,22 +14,32 @@ let client = new HttpClient();
 let idChannel = 'UCVswRUcKC-M35RzgPRv8qUg';
 let part ='statistics, brandingSettings'
 
-let nameChannel = document.querySelector('#name-channel'); 
+let titleChannel = document.querySelector('#title-channel'); 
 let descriptionChannel = document.querySelector('#description-channel'); 
 let imageChannel = document.querySelector('#image-channel'); 
 let countChannel = document.querySelector('#count'); 
+
+let form = document.querySelector('#form');
 
 let showStat = () => {
 	client.get(`https://www.googleapis.com/youtube/v3/channels?part=${part}&id=${idChannel}&key=AIzaSyA2CVFfCLdJu1y9pUfQJ7Osjexm5GAsQyo`, (response) => {
 		let info = JSON.parse(response).items[0];
 		console.log(info);
-		nameChannel.innerText        = info.brandingSettings.channel.title;
+		titleChannel.innerText        = info.brandingSettings.channel.title;
 		descriptionChannel.innerText = info.brandingSettings.channel.description;
 		countChannel.innerText       = info.statistics.subscriberCount;
 		imageChannel.src             = info.brandingSettings.image.bannerImageUrl;
 		
 	});
-}
+};
+
+form.addEventListener('submit',(event) => {
+	event.preventDefault();
+	let nameChannel = document.querySelector('#name-channel').value;
+	console.log(`Пользователь ввел: ${nameChannel}`);
+	
+
+});
 
 showStat();
 
